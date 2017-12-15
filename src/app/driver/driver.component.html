@@ -1,0 +1,34 @@
+<div style = 'margin-bottom:20px'>
+  <button class="btn m-btn m-btn--gradient-from-success m-btn--gradient-to-accent" (click) = "goToDriverPage()" >回首页</button>
+  <button class="btn m-btn m-btn--gradient-from-info m-btn--gradient-to-accent" (click) = "goToWeeklyPage()" >每周销售总量</button>
+  <button class="btn m-btn m-btn--gradient-from-accent m-btn--gradient-to-success" (click) = "goToCreditPage()" >查看信用卡数</button>
+</div>
+<div style="display:inline-flex;">
+    <h5 style="margin-right:20px">
+        请输入司机名字:
+    </h5>
+  <form>
+    <input  class="form-control" style="margin-right:20px"[(ngModel)]="driverID" [ngModelOptions]="{standalone: true}" >
+  </form>
+  
+  <h5 style="margin-right:20px;margin-left:20px">选择单号:</h5>
+  <select [(ngModel)]="searchName" style="margin-right:20px" class="form-control m-input--fixed">
+    <option *ngFor="let title of options" [value]="title">{{title}}</option>
+  </select>
+  <button class="btn m-btn m-btn--gradient-from-success m-btn--gradient-to-accent" (click)= 'selectBox()'>给司机{{driverID}}发单</button>
+</div>
+
+<h5>
+  司机名字： {{driverID}}
+</h5>
+<hr>
+<div *ngFor="let box of selectedBoxes"  >
+    <p style="margin-bottom:-2px">下单时间：{{box.created}} </p>
+
+  <div style = 'display: inline-flex;margin-bottom:-15px' >
+      <p style = 'margin-right:30px'>单号obid：{{box.obid}} </p>
+      <p>箱子号bbid：{{box.bbid}} </p>
+  </div>
+  <p>地址：{{box.addr}}</p>
+  <hr>
+</div>
