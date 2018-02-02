@@ -4,16 +4,17 @@
 
 ## 2018-02-02 update
 - Add data sample for get APIs. 
-- [3.3 Add order](https://github.com/ace68723/sweetfulBox_1.1/blob/master/Document/API_Document/v2/add_order.md)
+- [2.1 Add order](https://github.com/ace68723/sweetfulBox_1.1/blob/master/Document/API_Document/v2/add_order.md)
 
 
 ## Contents
-* [1. Data sample](#1) 
-  * [1.1 get spu list data sample](#1.1)
+* [1. Data sample](#1)
+  * [1.1 get spu list data sample](#1.1)
   * [1.2 get spu_detail data sample](#1.2)
   
-* [3. API Document (v2)](https://github.com/ace68723/sweetfulBox_1.1/tree/master/Document/API_Document)
-  * [3.1 Home data](https://github.com/ace68723/sweetfulBox_1.1/blob/master/Document/API_Document/v2/home_data.md)
+  
+* API Document (v2)
+  * [2.1 get spu list](https://github.com/ace68723/sbox_dashboard/blob/master/get_spu_list.md)
   
   
 <div id="1"> <div/>
