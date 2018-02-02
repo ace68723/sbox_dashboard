@@ -61,6 +61,8 @@
     "eo_spu": {
          spu_id:5,
          spu_name:"与美懒人大厨四川冒菜",
+         spu_price:"2.99",
+         spu_image:"http://xxx.jpg",
          spu_status:0,
          sku_total_count:6,
          sku_total_page:3,
@@ -73,22 +75,29 @@
              sku_name:"豚骨菌菇(大包装)",
              sku_status:0,
              sku_amount:329,
+             sku_threshold:9,
+             sku_alias:"yumeilanren",
              sku_image_id:762,
+             sku_image:"https://xxx.jpg",
              sku_fact_image_id:852,
+             sku_fact_image:"https://xxx.jpg",             
              sku_original_price:10.86,
              sku_price:10.86,
-
            },
            {
              spu_id:5,
-             sku_id:22,
-             sku_name:"豚骨菌菇(小包装)",
+             sku_id:53,
+             sku_name:"豚骨菌菇(小包装)",
              sku_status:0,
-             sku_amount:182,
+             sku_amount:329,
+             sku_threshold:9,
+             sku_alias:"yumeilanren",
              sku_image_id:762,
-             sku_fact_image_id:523,
-             sku_original_price:7.53,
-             sku_price:5.22
+             sku_image:"https://xxx.jpg",
+             sku_fact_image_id:852,
+             sku_fact_image:"https://xxx.jpg",             
+             sku_original_price:10.86,
+             sku_price:10.86,
            }
          ]
      }
