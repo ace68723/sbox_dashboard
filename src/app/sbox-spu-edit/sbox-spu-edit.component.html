@@ -1,3 +1,121 @@
-<p>
-  sbox-spu-edit works!
-</p>
+<!-- begin:: Page -->
+<div class="m-grid m-grid--hor m-grid--root m-page">
+  <app-header></app-header>
+  <div class="m-grid__item m-grid__item--fluid m-grid m-grid--ver-desktop m-grid--desktop m-body">
+    <app-sidebar></app-sidebar>
+    <div class="m-content" style="width:100%; height: 100%">
+      <div class="m-content" style="width:100%">
+
+        <div class="m-portlet m-portlet--mobile">
+          <div class="m-portlet__head">
+            <div class="m-portlet__head-caption">
+              <div class="m-portlet__head-title">
+                <h3 class="m-portlet__head-text">
+                                    {{SPUName}}
+                                </h3>
+              </div>
+            </div>
+
+          </div>
+          <div class="m-portlet__body">
+
+            <div class="tab-content">
+              <div class="tab-pane active" id="m_tabs_4_1" role="tabpanel" *ngIf="dataLoded">
+                <table class="table m-table m-table--head-separator-primary">
+                  <tr>
+                    <td style="width:150px">Account ID</td>
+                    <td>
+                      <input [disabled]='true' type="text" class="form-control date-set end-time2" [(ngModel)]="merchantInfo.account_id" size='20' style="border-radius: 10px;">
+                    </td>
+                    <td style="width:150px">Contact Person</td>
+                    <td>
+                      <input [disabled]='editing == false' type="text" class="form-control date-set end-time2" [(ngModel)]="merchantInfo.contact_person" style="border-radius: 10px;">
+                    </td>
+
+                  </tr>
+                  <tr>
+                    <td style="width:150px">Display Name</td>
+                    <td colspan="3">
+                      <input [disabled]='editing == false' type="text" class="form-control date-set end-time2" [(ngModel)]="merchantInfo.display_name" size='20' style="border-radius: 10px;">
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="width:150px">Address</td>
+                    <td colspan="3">
+                      <input [disabled]='editing == false' type="text" class="form-control date-set end-time2" [(ngModel)]="merchantInfo.address" style="border-radius: 10px;">
+                    </td>
+
+                  </tr>
+                  <tr>
+                    <td style="width:150px">Telephone Number</td>
+                    <td>
+                      <!-- <p-inputMask [disabled] ='editing == false' mask="(999) 999-9999" [(ngModel)]="merchantInfo.cell" placeholder="(999) 999-9999"></p-inputMask> -->
+                      <input [disabled]='editing == false' type="text" class="form-control date-set end-time2" [(ngModel)]="merchantInfo.cell" style="border-radius: 10px;" placeholder='1(111)111 - 1111'>
+                    </td>
+                    <td style="width:150px">Email</td>
+                    <td>
+                      <input [disabled]='editing == false' type="text" class="form-control date-set end-time2" [(ngModel)]="merchantInfo.email" style="border-radius: 10px;">
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="width:150px">Legal Name</td>
+                    <td colspan="3">
+                      <input [disabled]='editing == false' type="text" class="form-control date-set end-time2" [(ngModel)]="merchantInfo.legal_name" style="border-radius: 10px;">
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="width:150px">Postal Code</td>
+                    <td>
+                      <input [disabled]='editing == false' type="text" class="form-control date-set end-time2" [(ngModel)]="merchantInfo.postal" style="border-radius: 10px;">
+                    </td>
+                    <td style="width:150px">City</td>
+                    <td>
+                      <input [disabled]='editing == false' type="text" class="form-control date-set end-time2" [(ngModel)]="merchantInfo.city" style="border-radius: 10px;">
+                    </td>
+
+                  </tr>
+                  <tr>
+                    <td style="width:150px">Province</td>
+                    <td>
+                      <input [disabled]='editing == false' type="text" class="form-control date-set end-time2" [(ngModel)]="merchantInfo.province" style="border-radius: 10px;">
+                    </td>
+                    <td style="width:150px">Timezone</td>
+                    <td>
+                      <select [disabled]='editing == false' [(ngModel)]="merchantInfo.timezone" class="form-control m-input" id="exampleSelect1">
+                                                    <option>
+                                                        America/Vancouver
+                                                    <option>
+                                                        America/Edmonton
+                                                    </option>
+                                                    <option>
+                                                        America/Winnipeg
+                                                    </option>
+                                                    <option>
+                                                        America/Toronto
+                                                    </option>
+                                                    <option>
+                                                        America/Halifax
+                                                    </option>
+                                                    <option>
+                                                        America/St_Johns
+                                                    </option>
+                                                </select>
+                      <!-- <input [disabled] ='editing == false'  type="text"  class="form-control date-set end-time2" [(ngModel)] = "merchantInfo.timezone" size = '20' style = "border-radius: 10px;"> -->
+                    </td>
+                  </tr>
+
+                </table>
+                <div style="display: inline-flex">
+                  <button class="btn btn-warning" *ngIf="!editing" (click)='editing = !editing'> Edit</button>
+                  <button class="btn btn-warning" *ngIf="editing" (click)='editing = !editing;saveCategoryBasic()' style='margin-right: 20px'> Save</button>
+                  <button class="btn btn-warning" *ngIf="editing" (click)='editing = !editing;setCategoryToBasic()'> Cancel</button>
+                </div>
+              </div>
+            </div>
+            <!--end: Datatable -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

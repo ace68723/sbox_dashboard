@@ -1,4 +1,3 @@
-import { Component, OnInit } from '@angular/core';
 import { Component, OnChanges, SimpleChanges, Input, OnInit, AfterViewInit } from '@angular/core';
 import { ScriptLoaderService } from '../../js/script-loader.service';
 import { BrowserModule } from '@angular/platform-browser';
@@ -13,13 +12,12 @@ import {ActivatedRoute, Router} from '@angular/router';
   styleUrls: ['./sbox-spu-list.component.css']
 })
 
-export class SBoxSpuListComponent implements OnInit, AfterViewInit {
+export class SBoxSpuListComponent implements OnInit {
   page_num: number;
   listData: any = [];
   pageNumArray: any = [];
   page_size: number;
   i: any;
-  keyword: any;
   total_page: number;
   dataloded: any = false;
   constructor(private _script: ScriptLoaderService, private appService: AppService,
@@ -28,7 +26,6 @@ export class SBoxSpuListComponent implements OnInit, AfterViewInit {
   }
   ngOnInit() {
    this.getSPUList();
-   console.log(this.pageNumArray);
   }
 
   getNumber() {
@@ -42,7 +39,7 @@ export class SBoxSpuListComponent implements OnInit, AfterViewInit {
         this.page_num = event.ev_data.page_num;
         this.total_page = event.ev_data.total_page;
         this.dataloded = true;
-        console.log(this.page_num);
+        console.log(this.listData);
       }
     );
     setTimeout(() => {
@@ -55,7 +52,7 @@ export class SBoxSpuListComponent implements OnInit, AfterViewInit {
     this.page_num = i+1;
     this.appService.getSPUList(i + 1).subscribe(
       event => {
-        this.companyInfo = event.ev_data.recs;
+        this.listData = event.ev_data.recs;
 
       }
     );
@@ -63,9 +60,9 @@ export class SBoxSpuListComponent implements OnInit, AfterViewInit {
 
   goToEdit(item) {
     return;
-    this.router.navigate(['transaction']);
-    localStorage.setItem('account_id', item.account_id);
-    localStorage.setItem('merchantname', item.display_name);
-    localStorage.setItem('merchantID', item.merchant_id);
+    // this.router.navigate(['transaction']);
+    // localStorage.setItem('account_id', item.account_id);
+    // localStorage.setItem('merchantname', item.display_name);
+    // localStorage.setItem('merchantID', item.merchant_id);
   }
 }
