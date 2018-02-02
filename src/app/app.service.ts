@@ -60,12 +60,10 @@ export class AppService {
       });
       const options = new RequestOptions({ headers: headers });
 
-      // return this.http
-      //   .get
-      //   ('http://chanmao.us/api/sbmanage/v1/tmp_info',
-      //   options).map((response: Response) => {
-      //     return response.json();
-      //   }).catch(this.handleError);
+      return this.http.get('https://api.myjson.com/bins/ps2v5',
+      options).map((response: Response) => {
+          return response.json();
+        }).catch(this.handleError);
     }
 
     setSKUStatus(sku_id, new_status) {

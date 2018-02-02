@@ -12,7 +12,7 @@ import {ActivatedRoute, Router} from '@angular/router';
   styleUrls: ['./sbox-spu-list.component.css']
 })
 
-export class SBoxSpuListComponent implements OnInit {
+export class SboxSpuListComponent implements OnInit {
   page_num: number;
   listData: any = [];
   pageNumArray: any = [];
@@ -35,11 +35,10 @@ export class SBoxSpuListComponent implements OnInit {
   getSPUList() {
     this.appService.getSPUList(this.page_num).subscribe(
       event => {
-        this.listData = event.ev_data.recs;
-        this.page_num = event.ev_data.page_num;
-        this.total_page = event.ev_data.total_page;
+        this.listData = event.ea_spu_list;
+        this.page_num = event.ev_page_number;
+        this.total_page = event.ev_total_page;
         this.dataloded = true;
-        console.log(this.listData);
       }
     );
     setTimeout(() => {
@@ -52,8 +51,7 @@ export class SBoxSpuListComponent implements OnInit {
     this.page_num = i+1;
     this.appService.getSPUList(i + 1).subscribe(
       event => {
-        this.listData = event.ev_data.recs;
-
+        this.listData = event.ea_spu_list;
       }
     );
   }

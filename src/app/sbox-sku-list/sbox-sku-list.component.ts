@@ -13,7 +13,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 })
 export class SboxSkuListComponent implements OnInit {
   page_num: number;
-  parent_spu: number;
+  parent_spu: number = 0;
   listData: any = [];
   pageNumArray: any = [];
   page_size: number;
@@ -37,9 +37,10 @@ export class SboxSkuListComponent implements OnInit {
   getSKUList() {
     this.appService.getSKUList(this.parent_spu, this.page_num).subscribe(
       event => {
-        this.listData = event.ev_data.recs;
-        this.page_num = event.ev_data.page_num;
-        this.total_page = event.ev_data.total_page;
+        console.log('gg', event);
+        this.listData = event.eo_spu.sku_list;
+        this.page_num = event.eo_spu.sku_page_number;
+        this.total_page = event.eo_spu.sku_total_page;
         this.dataloded = true;
         console.log(this.page_num);
       }
@@ -54,7 +55,7 @@ export class SboxSkuListComponent implements OnInit {
     this.page_num = i+1;
     this.appService.getSKUList(this.parent_spu, i + 1).subscribe(
       event => {
-        this.listData = event.ev_data.recs;
+        this.listData = event.eo_spu.sku_list;
       }
     );
   }

@@ -1,9 +1,9 @@
 <body class="m-page--fluid m--skin- m-content--skin-light2 m-header--fixed m-header--fixed-mobile m-aside-left--enabled m-aside-left--skin-dark m-aside-left--offcanvas m-footer--push m-aside--offcanvas-default">
   <!-- begin:: Page -->
   <div class="m-grid m-grid--hor m-grid--root m-page">
-    <app-header></app-header>
+    <!-- <app-header></app-header> -->
     <div class="m-grid__item m-grid__item--fluid m-grid m-grid--ver-desktop m-grid--desktop m-body">
-      <app-sidebar></app-sidebar>
+      <!-- <app-sidebar></app-sidebar> -->
       <div class="m-content" style="width:100%">
         <div class="m-content" style="width:100%">
 
@@ -63,19 +63,40 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr *ngFor="let item of companyInfo; index as i;trackBy: i" [attr.data-index]="i">
+                    <tr *ngFor="let item of listData; index as i;trackBy: i" [attr.data-index]="i">
                       <td scope="row">
-                        {{item.account_id}}
+                        {{item.sku_id}}
                       </td>
                       <td>
-                        {{item.display_name}}
+                        {{item.spu_id}}
                       </td>
                       <td>
-                        {{item.cell}}
+                        {{item.sku_name}}
                       </td>
                       <td>
-                        {{item.merchant_id}}
+                        {{item.sku_alias}}
                       </td>
+                      <td>
+                        {{item.sku_original_price}}
+                      </td>
+                       <td>
+                        {{item.price}}
+                      </td>
+                      <td>
+                       {{item.sku_amount}}
+                     </td>
+                      <td>
+                        {{item.sku_threshold}}
+                      </td>
+                       <td>
+                        {{item.sku_image_id}}
+                      </td>
+                       <td>
+                        {{item.sku_fact_image_id}}
+                      </td>
+                     <td>
+                      {{item.sku_status}}
+                    </td>
 
                       <td>
                         <button class="btn btn-warning" (click)='goToEdit(item)'>编辑</button>
