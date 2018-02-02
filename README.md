@@ -3,8 +3,8 @@
 # sbox_dashboard
 
 ## 2018-02-02 update
-- Add data sample for get APIs. 
-- [2.1 Add order](https://github.com/ace68723/sweetfulBox_1.1/blob/master/Document/API_Document/v2/add_order.md)
+- Add [Data sample](#1) for get APIs. 
+- API 文档 [2.1 Get Spu List](https://github.com/ace68723/sbox_dashboard/blob/master/get_spu_list.md)
 
 
 ## Contents
@@ -14,7 +14,7 @@
   
   
 * API Document (v2)
-  * [2.1 get spu list](https://github.com/ace68723/sbox_dashboard/blob/master/get_spu_list.md)
+  * [2.1 Get Spu List](https://github.com/ace68723/sbox_dashboard/blob/master/get_spu_list.md)
   
   
 <div id="1"> <div/>
