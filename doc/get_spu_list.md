@@ -17,6 +17,7 @@
 | Tables | 类型及其范围 | 说明    | 默认值  |
 | ------ | ------ | ----- | ---- |
 | uuid   | string | 接口验证用 |      |
+| Authortoken   | string | 接口验证用 |      |
 
 接口说明：
 获取SPU List
@@ -26,7 +27,7 @@
 | Tables | 类型及其范围 | 必填  | 默认值  |  说明  |
 | ------ | ------ | ----- | ---- | ---- |
 | iv_page_size | number | 否 |  20  |  |
-| iv_page_number | number | 否 |  1  |  |
+| iv_page_num | number | 否 |  1  |  |
 
 
 返回字段说明:
@@ -37,7 +38,7 @@
 | ev_message | string | 报错信息     | 空          |
 | ev_total_count | number |      |           |
 | ev_total_page | number |      |           |
-| ev_page_number | number |      |           |
+| ev_page_num | number |      |           |
 | ev_page_size | number |      |           |
 | ea_spu_list  | array  |  |          |
 
@@ -58,7 +59,7 @@
     "ev_message": "",
     "ev_total_count": 10,
     "ev_total_page":3,
-    "ev_page_number":1,
+    "ev_page_num":1,
     "ev_page_size":4,
     "ea_spu_list":[
         {
