@@ -5,6 +5,7 @@
 ## 2018-02-05 update
 - Update [Data sample](#1) with actual response, suffix "page_number" changes to "page_num". 
 - API 文档 [2.2 Get Spu Detail](https://github.com/ace68723/sbox_dashboard/blob/master/doc/get_spu_detail.md)
+- API Get Spu List 和 Get Spu Detail在测试服务器可用，参见postman账号中 甜满箱/norgta.com/v2/甜满箱管理
 
 
 ## 2018-02-02 update
