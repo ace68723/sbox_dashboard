@@ -72,12 +72,6 @@
                     </td>
                   </tr>
                   <tr>
-                    <td style="width:150px">Price</td>
-                    <td colspan="3">
-                      <input [disabled]='editing == false' type="text" class="form-control date-set end-time2" [(ngModel)]="SKUData.sku_price" style="border-radius: 10px;">
-                    </td>
-                  </tr>
-                  <tr>
                     <td style="width:150px">Image</td>
                     <td colspan="3">
                       <input [disabled]='editing == false' type="text" class="form-control date-set end-time2" [(ngModel)]="SKUData.sku_image" style="border-radius: 10px;">
@@ -94,12 +88,14 @@
                   <tr>
                     <td style="width:150px">Status</td>
                     <td colspan="3">
-                      <input [disabled]='editing == false' type="text" class="form-control date-set end-time2" [(ngModel)]="SKUData.sku_status" style="border-radius: 10px;">
+                      <select [(ngModel)] = "SKUData.sku_status"  class="form-control m-input">
+                        <option *ngFor="let c of status_mapping" [ngValue]="c.id">{{c.name}}</option>
+                      </select>
                     </td>
                   </tr>
                 </table>
                 <div style="display: inline-flex">
-                  <button class="btn btn-warning" *ngIf="!editing" (click)='editing = !editing'> Save</button>
+                  <button class="btn btn-warning" (click)='updateSKUData()'> Save</button>
                 </div>
                 <div style="display: inline-flex">
                   <button class="btn btn-cancel" (click)='goBack()'> Cancel</button>

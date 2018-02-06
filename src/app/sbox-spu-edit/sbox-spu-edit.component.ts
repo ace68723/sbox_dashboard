@@ -92,7 +92,7 @@ export class SboxSpuEditComponent implements OnInit {
           alert('更新失败');
         }
         else{
-          alert('更新成功');
+          this.goBack();
         }
       }
     );
