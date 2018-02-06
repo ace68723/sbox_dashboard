@@ -35,6 +35,12 @@
                     </td>
                   </tr>
                   <tr>
+                    <td style="width:150px">Price($)</td>
+                    <td colspan="3">
+                      <input [disabled]='editing == false' type="text" class="form-control date-set end-time2" [(ngModel)]="SPUData.spu_price" size='20' style="border-radius: 10px;">
+                    </td>
+                  </tr>
+                  <tr>
                     <td style="width:150px">Image</td>
                     <td colspan="3">
                       <input [disabled]='editing == false' type="text" class="form-control date-set end-time2" [(ngModel)]="SPUData.spu_image" style="border-radius: 10px;">

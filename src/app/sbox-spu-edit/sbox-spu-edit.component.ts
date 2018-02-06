@@ -68,4 +68,8 @@ export class SboxSpuEditComponent implements OnInit {
   goBack(){
     window.history.back();
   }
+
+  setSKUStatus(item){
+
+  }
 }

@@ -25,6 +25,12 @@
                   <tr>
                     <td style="width:150px">SPU ID</td>
                     <td>
+                      <input [disabled]='true' type="text" class="form-control date-set end-time2" [(ngModel)]="SKUData.spu_id" size='20' style="border-radius: 10px;">
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="width:150px">SKU ID</td>
+                    <td>
                       <input [disabled]='true' type="text" class="form-control date-set end-time2" [(ngModel)]="SKUData.sku_id" size='20' style="border-radius: 10px;">
                     </td>
                   </tr>
@@ -92,6 +98,9 @@
                 </table>
                 <div style="display: inline-flex">
                   <button class="btn btn-warning" *ngIf="!editing" (click)='editing = !editing'> Save</button>
+                </div>
+                <div style="display: inline-flex">
+                  <button class="btn btn-cancel" (click)='goBack()'> Cancel</button>
                 </div>
               </div>
             </div>

@@ -65,4 +65,7 @@ export class SboxSpuListComponent implements OnInit {
     this.router.navigate(['spu-edit']);
     localStorage.setItem('spu_id', item.spu_id);
   }
+  setSKUStatus(item){
+    
+  }
 }

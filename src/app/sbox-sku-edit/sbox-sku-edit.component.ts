@@ -29,4 +29,8 @@ export class SboxSkuEditComponent implements OnInit {
     console.log('gg', this.SKUData);
     this.dataLoded = true;
   }
+
+  goBack(){
+    window.history.back();
+  }
 }
