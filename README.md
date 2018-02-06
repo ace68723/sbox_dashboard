@@ -2,6 +2,12 @@
 
 # sbox_dashboard
 
+
+## 2018-02-06 update
+- API [2.3 Set Spu](https://github.com/ace68723/sbox_dashboard/blob/master/doc/set_spu.md)
+- API [2.4 Set Sku](https://github.com/ace68723/sbox_dashboard/blob/master/doc/set_sku.md)
+
+
 ## 2018-02-05 update
 - Update [Data sample](#1) with actual response, suffix "page_number" changes to "page_num". 
 - API 文档 [2.2 Get Spu Detail](https://github.com/ace68723/sbox_dashboard/blob/master/doc/get_spu_detail.md)
@@ -21,7 +27,9 @@
   
 * [2. API Document](https://github.com/ace68723/sbox_dashboard/blob/master/doc)
   * [2.1 Get Spu List](https://github.com/ace68723/sbox_dashboard/blob/master/doc/get_spu_list.md)
-  
+  * [2.2 Get Spu Detail](https://github.com/ace68723/sbox_dashboard/blob/master/doc/get_spu_detail.md)  
+  * [2.3 Set Spu](https://github.com/ace68723/sbox_dashboard/blob/master/doc/set_spu.md)
+  * [2.4 Set Sku](https://github.com/ace68723/sbox_dashboard/blob/master/doc/set_sku.md)
   
 <div id="1"> <div/>
 
