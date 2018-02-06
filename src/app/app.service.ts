@@ -14,6 +14,14 @@ export class AppService {
       return Observable.throw(error.json());
     }
 
+    getStatusMapping(){
+      return [
+        {'id': 0, 'name': '正常'},
+        {'id': 1, 'name': '已售罄'},
+        {'id': 9, 'name': '已下线'},
+      ];
+    }
+
     // SPU related
     getSPUList(page_num) {
       const headers = new Headers({

@@ -26,11 +26,7 @@ export class SboxSpuEditComponent implements OnInit {
 
   constructor(private _script: ScriptLoaderService, private appService: AppService,
     public route: ActivatedRoute, private router: Router) {
-      this.status_mapping = [
-        {'id': 0, 'name': 'ok'},
-        {'id': 1, 'name': 'sold out'},
-        {'id': 9, 'name': '下线'},
-      ]
+      this.status_mapping = this.appService.getStatusMapping();
   }
 
   ngOnInit() {
