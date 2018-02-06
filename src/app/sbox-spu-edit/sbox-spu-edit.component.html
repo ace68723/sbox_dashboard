@@ -11,7 +11,7 @@
             <div class="m-portlet__head-caption">
               <div class="m-portlet__head-title">
                 <h3 class="m-portlet__head-text">
-                                    {{SPUName}}
+                      Edit SPU
                                 </h3>
               </div>
             </div>
@@ -23,97 +23,133 @@
               <div class="tab-pane active" id="m_tabs_4_1" role="tabpanel" *ngIf="dataLoded">
                 <table class="table m-table m-table--head-separator-primary">
                   <tr>
-                    <td style="width:150px">Account ID</td>
+                    <td style="width:150px">SPU ID</td>
                     <td>
-                      <input [disabled]='true' type="text" class="form-control date-set end-time2" [(ngModel)]="merchantInfo.account_id" size='20' style="border-radius: 10px;">
+                      <input [disabled]='true' type="text" class="form-control date-set end-time2" [(ngModel)]="SPUData.spu_id" size='20' style="border-radius: 10px;">
                     </td>
-                    <td style="width:150px">Contact Person</td>
-                    <td>
-                      <input [disabled]='editing == false' type="text" class="form-control date-set end-time2" [(ngModel)]="merchantInfo.contact_person" style="border-radius: 10px;">
+                  </tr>
+                  <tr>
+                    <td style="width:150px">SPU Name</td>
+                    <td colspan="3">
+                      <input [disabled]='editing == false' type="text" class="form-control date-set end-time2" [(ngModel)]="SPUData.spu_name" size='20' style="border-radius: 10px;">
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="width:150px">Image</td>
+                    <td colspan="3">
+                      <input [disabled]='editing == false' type="text" class="form-control date-set end-time2" [(ngModel)]="SPUData.spu_image" style="border-radius: 10px;">
                     </td>
 
-                  </tr>
-                  <tr>
-                    <td style="width:150px">Display Name</td>
-                    <td colspan="3">
-                      <input [disabled]='editing == false' type="text" class="form-control date-set end-time2" [(ngModel)]="merchantInfo.display_name" size='20' style="border-radius: 10px;">
-                    </td>
-                  </tr>
-                  <tr>
-                    <td style="width:150px">Address</td>
-                    <td colspan="3">
-                      <input [disabled]='editing == false' type="text" class="form-control date-set end-time2" [(ngModel)]="merchantInfo.address" style="border-radius: 10px;">
-                    </td>
-
-                  </tr>
-                  <tr>
-                    <td style="width:150px">Telephone Number</td>
-                    <td>
-                      <!-- <p-inputMask [disabled] ='editing == false' mask="(999) 999-9999" [(ngModel)]="merchantInfo.cell" placeholder="(999) 999-9999"></p-inputMask> -->
-                      <input [disabled]='editing == false' type="text" class="form-control date-set end-time2" [(ngModel)]="merchantInfo.cell" style="border-radius: 10px;" placeholder='1(111)111 - 1111'>
-                    </td>
-                    <td style="width:150px">Email</td>
-                    <td>
-                      <input [disabled]='editing == false' type="text" class="form-control date-set end-time2" [(ngModel)]="merchantInfo.email" style="border-radius: 10px;">
-                    </td>
-                  </tr>
-                  <tr>
-                    <td style="width:150px">Legal Name</td>
-                    <td colspan="3">
-                      <input [disabled]='editing == false' type="text" class="form-control date-set end-time2" [(ngModel)]="merchantInfo.legal_name" style="border-radius: 10px;">
-                    </td>
-                  </tr>
-                  <tr>
-                    <td style="width:150px">Postal Code</td>
-                    <td>
-                      <input [disabled]='editing == false' type="text" class="form-control date-set end-time2" [(ngModel)]="merchantInfo.postal" style="border-radius: 10px;">
-                    </td>
-                    <td style="width:150px">City</td>
-                    <td>
-                      <input [disabled]='editing == false' type="text" class="form-control date-set end-time2" [(ngModel)]="merchantInfo.city" style="border-radius: 10px;">
-                    </td>
-
-                  </tr>
-                  <tr>
-                    <td style="width:150px">Province</td>
-                    <td>
-                      <input [disabled]='editing == false' type="text" class="form-control date-set end-time2" [(ngModel)]="merchantInfo.province" style="border-radius: 10px;">
-                    </td>
-                    <td style="width:150px">Timezone</td>
-                    <td>
-                      <select [disabled]='editing == false' [(ngModel)]="merchantInfo.timezone" class="form-control m-input" id="exampleSelect1">
-                                                    <option>
-                                                        America/Vancouver
-                                                    <option>
-                                                        America/Edmonton
-                                                    </option>
-                                                    <option>
-                                                        America/Winnipeg
-                                                    </option>
-                                                    <option>
-                                                        America/Toronto
-                                                    </option>
-                                                    <option>
-                                                        America/Halifax
-                                                    </option>
-                                                    <option>
-                                                        America/St_Johns
-                                                    </option>
-                                                </select>
-                      <!-- <input [disabled] ='editing == false'  type="text"  class="form-control date-set end-time2" [(ngModel)] = "merchantInfo.timezone" size = '20' style = "border-radius: 10px;"> -->
-                    </td>
                   </tr>
 
                 </table>
                 <div style="display: inline-flex">
                   <button class="btn btn-warning" *ngIf="!editing" (click)='editing = !editing'> Edit</button>
-                  <button class="btn btn-warning" *ngIf="editing" (click)='editing = !editing;saveCategoryBasic()' style='margin-right: 20px'> Save</button>
-                  <button class="btn btn-warning" *ngIf="editing" (click)='editing = !editing;setCategoryToBasic()'> Cancel</button>
                 </div>
               </div>
             </div>
             <!--end: Datatable -->
           </div>
+
+          <!-- SKU List -->
+          <div class="m-portlet__body">
+
+            <div class="m-section__content">
+              <table class="table m-table m-table--head-separator-primary">
+                <thead>
+                  <tr>
+                    <th>
+                      SKU ID
+                    </th>
+                    <th>
+                      SPU ID
+                    </th>
+                    <th>
+                      Name
+                    </th>
+                    <th>
+                      Alias
+                    </th>
+                    <th>
+                      Original Price
+                    </th>
+                    <th>
+                      Price
+                    </th>
+                    <th>
+                      Amount
+                    </th>
+                    <th>
+                      Threshhold
+                    </th>
+                    <th>
+                      Image
+                    </th>
+                    <th>
+                      Fact Image
+                    </th>
+                    <th>
+                      Status
+                    </th>
+                    <th>
+                      Action
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let item of SKUList; index as i;trackBy: i" [attr.data-index]="i">
+                    <td scope="row">
+                      {{item.sku_id}}
+                    </td>
+                    <td>
+                      {{item.spu_id}}
+                    </td>
+                    <td>
+                      {{item.sku_name}}
+                    </td>
+                    <td>
+                      {{item.sku_alias}}
+                    </td>
+                    <td>
+                      ${{item.sku_original_price}}
+                    </td>
+                    <td>
+                      ${{item.sku_price}}
+                    </td>
+                    <td>
+                      {{item.sku_amount}}
+                    </td>
+                    <td>
+                      {{item.sku_threshold}}
+                    </td>
+                    <td>
+                      {{item.sku_image_id}}
+                    </td>
+                    <td>
+                      {{item.sku_fact_image_id}}
+                    </td>
+                    <td>
+                      {{item.sku_status}}
+                    </td>
+
+                    <td>
+                      <button class="btn btn-warning" (click)='goToEdit(item)'>编辑</button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <div style="display: inline-flex" *ngFor="let item of pageNumArray;  index as i;trackBy: i" [attr.data-index]="i">
+                <a [class.some-class]="i+1 === page_num" style="margin-right:7px" class="btn btn-outline-warning m-btn m-btn--icon m-btn--icon-only" (click)='goToPage(i)'>
+                  <p style="height: 100%;
+                                                  margin-top: 27%;">{{i+1}}</p>
+                </a>
+              </div>
+            </div>
+
+            <!--end: Datatable -->
+          </div>
+
+
         </div>
       </div>
     </div>

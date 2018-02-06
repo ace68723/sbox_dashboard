@@ -27,7 +27,6 @@ export class SboxSkuListComponent implements OnInit {
   ngAfterViewInit() {}
   ngOnInit() {
    this.getSKUList();
-   console.log(this.pageNumArray);
   }
 
   getNumber() {
@@ -37,18 +36,17 @@ export class SboxSkuListComponent implements OnInit {
   getSKUList() {
     this.appService.getSKUList(this.parent_spu, this.page_num).subscribe(
       event => {
-        console.log('gg', event);
+        // console.log('gg', event);
         this.listData = event.eo_spu.sku_list;
         this.page_num = event.eo_spu.sku_page_number;
         this.total_page = event.eo_spu.sku_total_page;
         this.dataloded = true;
-        console.log(this.page_num);
+        console.log('a', this.page_num);
       }
     );
     setTimeout(() => {
       this.getNumber();
     }, 2000);
-    console.log(this.pageNumArray);
   }
 
   goToPage(i) {

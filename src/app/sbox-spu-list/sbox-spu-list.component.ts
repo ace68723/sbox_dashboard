@@ -25,7 +25,7 @@ export class SboxSpuListComponent implements OnInit {
 
   }
   ngOnInit() {
-   this.getSPUList();
+    this.getSPUList();
   }
 
   getNumber() {
@@ -39,12 +39,12 @@ export class SboxSpuListComponent implements OnInit {
         this.page_num = event.ev_page_number;
         this.total_page = event.ev_total_page;
         this.dataloded = true;
+        console.log('1', this.listData);
       }
     );
     setTimeout(() => {
       this.getNumber();
     }, 2000);
-    console.log(this.pageNumArray);
   }
 
   goToPage(i) {
@@ -57,10 +57,7 @@ export class SboxSpuListComponent implements OnInit {
   }
 
   goToEdit(item) {
-    return;
-    // this.router.navigate(['transaction']);
-    // localStorage.setItem('account_id', item.account_id);
-    // localStorage.setItem('merchantname', item.display_name);
-    // localStorage.setItem('merchantID', item.merchant_id);
+    this.router.navigate(['spu-edit']);
+    localStorage.setItem('spu_id', item.spu_id);
   }
 }

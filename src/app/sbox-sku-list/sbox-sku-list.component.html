@@ -77,26 +77,26 @@
                         {{item.sku_alias}}
                       </td>
                       <td>
-                        {{item.sku_original_price}}
-                      </td>
-                       <td>
-                        {{item.price}}
+                        ${{item.sku_original_price}}
                       </td>
                       <td>
-                       {{item.sku_amount}}
-                     </td>
+                        ${{item.sku_price}}
+                      </td>
+                      <td>
+                        {{item.sku_amount}}
+                      </td>
                       <td>
                         {{item.sku_threshold}}
                       </td>
-                       <td>
+                      <td>
                         {{item.sku_image_id}}
                       </td>
-                       <td>
+                      <td>
                         {{item.sku_fact_image_id}}
                       </td>
-                     <td>
-                      {{item.sku_status}}
-                    </td>
+                      <td>
+                        {{item.sku_status}}
+                      </td>
 
                       <td>
                         <button class="btn btn-warning" (click)='goToEdit(item)'>编辑</button>
