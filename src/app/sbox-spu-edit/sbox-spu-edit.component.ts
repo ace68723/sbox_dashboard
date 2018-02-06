@@ -56,6 +56,6 @@ export class SboxSpuEditComponent implements OnInit {
   }
   goToEdit(item) {
     this.router.navigate(['sku-edit']);
-    localStorage.setItem('sku_id', item.sku_id);
+    localStorage.setItem('sku_data', JSON.stringify(item));
   }
 }
