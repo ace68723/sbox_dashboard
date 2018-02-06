@@ -25,11 +25,11 @@
 请求字段:
 
 | Tables | 类型及其范围 | 必填  |  说明  |
-| ------ | ------ | ----- | ---- | ---- |
-| spu_id | number | 是 |   |  |
-| spu_name           | string  | 是 |  名称                                     |
-| spu_image_id         | number | 是 |  图片ID(暂时不使用)                 |
-| spu_status     | number  | 是 |  0 = ok, 1 = sold out, 9 = 下线 |
+| ------ | ------ | ----- | ---- |
+| spu_id | number | 是 |   |
+| spu_name | string  | 否 | 名称                                 |
+| spu_image_id  | number | 否 |  图片ID(暂时不使用)                 |
+| spu_status  | number  | 否 |  0 = ok, 1 = sold out, 9 = 下线 |
 
 返回字段说明:
 
