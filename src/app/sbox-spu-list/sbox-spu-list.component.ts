@@ -21,8 +21,7 @@ export class SboxSpuListComponent implements OnInit {
   total_page: number;
   status_mapping: any = [];
   dataloded: any = false;
-  constructor(private _script: ScriptLoaderService, private appService: AppService,
-    public route: ActivatedRoute, private router: Router) {
+  constructor(private _script: ScriptLoaderService, private appService: AppService, public route: ActivatedRoute, private router: Router) {
       this.status_mapping = [
         {'id': 0, 'name': 'ok'},
         {'id': 1, 'name': 'sold out'},
@@ -44,7 +43,7 @@ export class SboxSpuListComponent implements OnInit {
         this.page_num = event.ev_page_number;
         this.total_page = event.ev_total_page;
         this.dataloded = true;
-        console.log('1', this.listData);
+        // console.log('1', this.listData);
       }
     );
     setTimeout(() => {
@@ -65,7 +64,13 @@ export class SboxSpuListComponent implements OnInit {
     this.router.navigate(['spu-edit']);
     localStorage.setItem('spu_id', item.spu_id);
   }
-  setSKUStatus(item){
-    
+  setSPUStatus(item){
+    this.appService.setSPUStatus(item.spu_id, item.status).subscribe(
+      event => {
+        if (!event || event.ev_error != 0){
+          alert('更新失败');
+        }
+      }
+    );
   }
 }

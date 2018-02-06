@@ -37,7 +37,7 @@
                   <tr>
                     <td style="width:150px">Price($)</td>
                     <td colspan="3">
-                      <input [disabled]='editing == false' type="text" class="form-control date-set end-time2" [(ngModel)]="SPUData.spu_price" size='20' style="border-radius: 10px;">
+                      <input [disabled]='true' type="text" class="form-control date-set end-time2" [(ngModel)]="SPUData.spu_price" size='20' style="border-radius: 10px;">
                     </td>
                   </tr>
                   <tr>
@@ -58,7 +58,7 @@
                   </tr>
                 </table>
                 <div style="display: inline-flex">
-                  <button class="btn btn-warning" *ngIf="!editing" (click)='editing = !editing'> Save</button>
+                  <button class="btn btn-warning" (click)='updateSPUData()'> Save</button>
                 </div>
                 <div style="display: inline-flex">
                   <button class="btn btn-cancel" (click)='goBack()'> Cancel</button>
@@ -146,7 +146,7 @@
                       {{item.sku_fact_image_id}}
                     </td>
                     <td>
-                      <select [(ngModel)] = "item.sku_status"  class="form-control m-input">
+                      <select [(ngModel)] = "item.sku_status"  class="form-control m-input" (ngModelChange)="setSKUStatus(item)">
                         <option *ngFor="let c of status_mapping" [ngValue]="c.id">{{c.name}}</option>
                       </select>
                     </td>

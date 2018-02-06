@@ -51,29 +51,25 @@ export class AppService {
     }
 
     setSPUStatus(spu_id, new_status) {
-      const headers = new Headers({
-        'Content-Type': 'application/json',
-      });
-      const options = new RequestOptions({ headers: headers });
-
-      return this.http.get('https://api.myjson.com/bins/18ex91',
-      options).map((response: Response) => {
-          return response.json();
-        }).catch(this.handleError);
+      const body = {
+        'spu_id': spu_id,
+        'spu_status': new_status,
+      };
+      return this.updateSPUData(body);
     }
 
-    updateSPUData(spu_id, new_data) {
+    updateSPUData(new_data) {
       const headers = new Headers({
+        'Authortoken': 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1aWQiOiIxMDYxMSIsImV4cGlyZWQiOjE0ODc3OTM2MDAsImxhc3Rsb2dpbiI6MTQ4MTc0MjU2N30.ZHwmJEBV_1cO5uxR729Hd49rRIpRdCEDbX-uVDgVee0',
+        'uuid': '1',
         'Content-Type': 'application/json',
       });
       const options = new RequestOptions({ headers: headers });
-
-      // return this.http
-      //   .get
-      //   ('http://chanmao.us/api/sbmanage/v1/tmp_info',
-      //   options).map((response: Response) => {
-      //     return response.json();
-      //   }).catch(this.handleError);
+      return this.http
+        .post('http://norgta.com/api/sbmanage/v2/set_spu', new_data, {headers: headers}
+        ).map((response: Response) => {
+          return response.json();
+        }).catch(this.handleError);
     }
 
     // SKU related
@@ -90,29 +86,24 @@ export class AppService {
     }
 
     setSKUStatus(sku_id, new_status) {
-      const headers = new Headers({
-        'Content-Type': 'application/json',
-      });
-      const options = new RequestOptions({ headers: headers });
-
-      // return this.http
-      //   .get
-      //   ('http://chanmao.us/api/sbmanage/v1/tmp_info',
-      //   options).map((response: Response) => {
-      //     return response.json();
-      //   }).catch(this.handleError);
+      const body = {
+        'sku_id':sku_id,
+        'sku_status': new_status,
+      };
+      return this.updateSKUData(body);
     }
-    updateSPKData(spu_id, new_data) {
+
+    updateSKUData(new_data) {
       const headers = new Headers({
+        'Authortoken': 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1aWQiOiIxMDYxMSIsImV4cGlyZWQiOjE0ODc3OTM2MDAsImxhc3Rsb2dpbiI6MTQ4MTc0MjU2N30.ZHwmJEBV_1cO5uxR729Hd49rRIpRdCEDbX-uVDgVee0',
+        'uuid': '1',
         'Content-Type': 'application/json',
       });
       const options = new RequestOptions({ headers: headers });
-
-      // return this.http
-      //   .get
-      //   ('http://chanmao.us/api/sbmanage/v1/tmp_info',
-      //   options).map((response: Response) => {
-      //     return response.json();
-      //   }).catch(this.handleError);
+      return this.http
+        .post('http://norgta.com/api/sbmanage/v2/set_sku', new_data, {headers: headers}
+        ).map((response: Response) => {
+          return response.json();
+        }).catch(this.handleError);
     }
 }

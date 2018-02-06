@@ -48,7 +48,6 @@ export class SboxSpuEditComponent implements OnInit {
         this.SPUData = event.eo_spu;
         this.SKUList = event.eo_spu.sku_list;
         this.dataLoded = true;
-        console.log(this.SPUData);
       },
     );
   }
@@ -70,6 +69,32 @@ export class SboxSpuEditComponent implements OnInit {
   }
 
   setSKUStatus(item){
+    this.appService.setSKUStatus(item.sku_id, item.sku_status).subscribe(
+      event => {
+        if (!event || event.ev_error != 0){
+          alert('更新失败');
+        }
+      }
+    );
+  }
 
+  updateSPUData(){
+    const body = {
+      'spu_id':this.SPUData.spu_id,
+      'spu_name': this.SPUData.spu_name,
+      // 'spu_price': this.SPUData.spu_price,
+      // 'spu_image': this.SPUData.spu_image,
+      'spu_status': this.SPUData.spu_status,
+    };
+    this.appService.updateSPUData(body).subscribe(
+      event => {
+        if (!event || event.ev_error != 0){
+          alert('更新失败');
+        }
+        else{
+          alert('更新成功');
+        }
+      }
+    );
   }
 }

@@ -59,7 +59,7 @@
                         ${{item.spu_price}}
                       </td>
                       <td>
-                        <select [(ngModel)] = "item.status"  class="form-control m-input">
+                        <select [(ngModel)] = "item.status"  class="form-control m-input" (ngModelChange)="setSPUStatus(item)">
                           <option *ngFor="let c of status_mapping" [ngValue]="c.id">{{c.name}}</option>
                         </select>
                       </td>
