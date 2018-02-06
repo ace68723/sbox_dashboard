@@ -20,11 +20,18 @@ export class SboxSpuEditComponent implements OnInit {
   pageNumArray: any = [];
   page_size: number;
   i: any;
+  status_mapping: any = [];
   total_page: number;
   dataLoded: any = false;
 
   constructor(private _script: ScriptLoaderService, private appService: AppService,
-    public route: ActivatedRoute, private router: Router) { }
+    public route: ActivatedRoute, private router: Router) {
+      this.status_mapping = [
+        {'id': 0, 'name': 'ok'},
+        {'id': 1, 'name': 'sold out'},
+        {'id': 9, 'name': '下线'},
+      ]
+  }
 
   ngOnInit() {
     this.SPUId = parseInt(localStorage.getItem('spu_id'));
@@ -57,5 +64,8 @@ export class SboxSpuEditComponent implements OnInit {
   goToEdit(item) {
     this.router.navigate(['sku-edit']);
     localStorage.setItem('sku_data', JSON.stringify(item));
+  }
+  goBack(){
+    window.history.back();
   }
 }

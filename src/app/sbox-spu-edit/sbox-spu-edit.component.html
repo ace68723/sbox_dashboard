@@ -38,13 +38,24 @@
                     <td style="width:150px">Image</td>
                     <td colspan="3">
                       <input [disabled]='editing == false' type="text" class="form-control date-set end-time2" [(ngModel)]="SPUData.spu_image" style="border-radius: 10px;">
+                      <button class="btn btn-warning" (click)='showUpload'> Upload</button>
                     </td>
-
                   </tr>
 
+                  <tr>
+                    <td style="width:150px">Status</td>
+                    <td colspan="3">
+                      <select [(ngModel)] = "SPUData.spu_status"  class="form-control m-input">
+                        <option *ngFor="let c of status_mapping" [ngValue]="c.id">{{c.name}}</option>
+                      </select>
+                    </td>
+                  </tr>
                 </table>
                 <div style="display: inline-flex">
                   <button class="btn btn-warning" *ngIf="!editing" (click)='editing = !editing'> Save</button>
+                </div>
+                <div style="display: inline-flex">
+                  <button class="btn btn-cancel" (click)='goBack()'> Cancel</button>
                 </div>
               </div>
             </div>
@@ -129,7 +140,9 @@
                       {{item.sku_fact_image_id}}
                     </td>
                     <td>
-                      {{item.sku_status}}
+                      <select [(ngModel)] = "item.sku_status"  class="form-control m-input">
+                        <option *ngFor="let c of status_mapping" [ngValue]="c.id">{{c.name}}</option>
+                      </select>
                     </td>
 
                     <td>

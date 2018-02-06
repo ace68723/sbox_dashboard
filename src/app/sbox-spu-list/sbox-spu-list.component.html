@@ -59,7 +59,9 @@
                         ${{item.spu_price}}
                       </td>
                       <td>
-                        {{item.status}}
+                        <select [(ngModel)] = "item.status"  class="form-control m-input">
+                          <option *ngFor="let c of status_mapping" [ngValue]="c.id">{{c.name}}</option>
+                        </select>
                       </td>
                       <td>
                         <button class="btn btn-warning" (click)='goToEdit(item)'>Edit</button>

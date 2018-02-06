@@ -19,10 +19,15 @@ export class SboxSpuListComponent implements OnInit {
   page_size: number;
   i: any;
   total_page: number;
+  status_mapping: any = [];
   dataloded: any = false;
   constructor(private _script: ScriptLoaderService, private appService: AppService,
     public route: ActivatedRoute, private router: Router) {
-
+      this.status_mapping = [
+        {'id': 0, 'name': 'ok'},
+        {'id': 1, 'name': 'sold out'},
+        {'id': 9, 'name': '下线'},
+      ]
   }
   ngOnInit() {
     this.getSPUList();
