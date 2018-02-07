@@ -42,10 +42,9 @@ export class SboxSpuListComponent implements OnInit {
       event => {
         this.toggleLoading();
         this.listData = event.ea_spu_list;
-        this.page_num = event.ev_page_number;
+        this.page_num = event.ev_page_num;
         this.total_page = event.ev_total_page;
         this.getNumber();
-        // console.log('1', this.listData);
       }
     );
   }
