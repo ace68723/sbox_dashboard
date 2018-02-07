@@ -20,7 +20,7 @@ export class SboxSpuListComponent implements OnInit {
   i: any;
   total_page: number;
   status_mapping: any = [];
-  dataloded: any = false;
+  dataLoded: any = true;
   constructor(private _script: ScriptLoaderService, private appService: AppService, public route: ActivatedRoute, private router: Router) {
       this.status_mapping = this.appService.getStatusMapping();
   }
@@ -28,23 +28,26 @@ export class SboxSpuListComponent implements OnInit {
     this.getSPUList();
   }
 
+  toggleLoading(){
+    this.dataLoded = !this.dataLoded;
+  }
+
   getNumber() {
     return this.pageNumArray = new Array(this.total_page);
   }
 
   getSPUList() {
+    this.toggleLoading();
     this.appService.getSPUList(this.page_num).subscribe(
       event => {
+        this.toggleLoading();
         this.listData = event.ea_spu_list;
         this.page_num = event.ev_page_number;
         this.total_page = event.ev_total_page;
-        this.dataloded = true;
+        this.getNumber();
         // console.log('1', this.listData);
       }
     );
-    setTimeout(() => {
-      this.getNumber();
-    }, 2000);
   }
 
   goToPage(i) {
@@ -60,9 +63,12 @@ export class SboxSpuListComponent implements OnInit {
     this.router.navigate(['spu-edit']);
     localStorage.setItem('spu_id', item.spu_id);
   }
+
   setSPUStatus(item){
+    this.toggleLoading();
     this.appService.setSPUStatus(item.spu_id, item.status).subscribe(
       event => {
+        this.toggleLoading();
         if (!event || event.ev_error != 0){
           alert('更新失败');
         }

@@ -20,7 +20,7 @@ export class SboxSkuEditComponent implements OnInit {
   i: any;
   status_mapping: any = [];
   total_page: number;
-  dataLoded: any = false;
+  dataLoded: any = true;
 
   constructor(private _script: ScriptLoaderService, private appService: AppService,
     public route: ActivatedRoute, private router: Router) {
@@ -29,13 +29,16 @@ export class SboxSkuEditComponent implements OnInit {
 
   ngOnInit() {
     this.SKUData = JSON.parse(localStorage.getItem('sku_data'));
-    console.log('gg', this.SKUData);
-    this.dataLoded = true;
   }
 
   goBack(){
     window.history.back();
   }
+
+  toggleLoading(){
+    this.dataLoded = !this.dataLoded;
+  }
+
   updateSKUData(){
     const body = {
       'sku_id':this.SKUData.sku_id,
@@ -50,9 +53,12 @@ export class SboxSkuEditComponent implements OnInit {
       'sku_threshold': parseInt(this.SKUData.sku_threshold),
       // 'sku_amount': this.SKUData.sku_amount,
     };
+
+    this.toggleLoading();
     this.appService.updateSKUData(body).subscribe(
       event => {
         console.log(event);
+        this.toggleLoading();
         if (!event || event.ev_error != 0){
           alert('更新失败');
         }

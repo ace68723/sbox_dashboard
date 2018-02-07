@@ -20,7 +20,7 @@
           <div class="m-portlet__body">
 
             <div class="tab-content">
-              <div class="tab-pane active" id="m_tabs_4_1" role="tabpanel" *ngIf="dataLoded">
+              <div class="tab-pane active" id="m_tabs_4_1" role="tabpanel">
                 <table class="table m-table m-table--head-separator-primary">
                   <tr>
                     <td style="width:150px">SPU ID</td>
@@ -58,7 +58,7 @@
                   </tr>
                 </table>
                 <div style="display: inline-flex">
-                  <button class="btn btn-warning" (click)='updateSPUData()'> Save</button>
+                  <button [disabled]="!dataLoded" class="btn btn-warning" (click)='updateSPUData()'> Save</button>
                 </div>
                 <div style="display: inline-flex">
                   <button class="btn btn-cancel" (click)='goBack()'> Cancel</button>
@@ -76,10 +76,10 @@
                 <thead>
                   <tr>
                     <th>
-                      SKU ID
+                      SPU ID
                     </th>
                     <th>
-                      SPU ID
+                      SKU ID
                     </th>
                     <th>
                       Name
@@ -115,11 +115,11 @@
                 </thead>
                 <tbody>
                   <tr *ngFor="let item of SKUList; index as i;trackBy: i" [attr.data-index]="i">
-                    <td scope="row">
-                      {{item.sku_id}}
-                    </td>
                     <td>
                       {{item.spu_id}}
+                    </td>
+                    <td>
+                      {{item.sku_id}}
                     </td>
                     <td>
                       {{item.sku_name}}
@@ -147,7 +147,7 @@
                     </td>
                     <td>
                       <select [(ngModel)] = "item.sku_status"  class="form-control m-input" (ngModelChange)="setSKUStatus(item)">
-                        <option *ngFor="let c of status_mapping" [ngValue]="c.id">{{c.name}}</option>
+                        <option [disabled]="!dataLoded" *ngFor="let c of status_mapping" [ngValue]="c.id">{{c.name}}</option>
                       </select>
                     </td>
 

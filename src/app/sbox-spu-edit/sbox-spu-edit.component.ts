@@ -22,7 +22,7 @@ export class SboxSpuEditComponent implements OnInit {
   i: any;
   status_mapping: any = [];
   total_page: number;
-  dataLoded: any = false;
+  dataLoded: any = true;
 
   constructor(private _script: ScriptLoaderService, private appService: AppService,
     public route: ActivatedRoute, private router: Router) {
@@ -34,16 +34,21 @@ export class SboxSpuEditComponent implements OnInit {
     this.getSPUInfo();
   }
 
+  toggleLoading(){
+    this.dataLoded = !this.dataLoded;
+  }
+
   getNumber() {
     return this.pageNumArray = new Array(this.total_page);
   }
 
   getSPUInfo(){
+    this.toggleLoading();
     this.appService.getSPUInfo(this.SPUId, this.page_num).subscribe(
       event => {
         this.SPUData = event.eo_spu;
         this.SKUList = event.eo_spu.sku_list;
-        this.dataLoded = true;
+        this.toggleLoading();
       },
     );
   }
@@ -56,17 +61,21 @@ export class SboxSpuEditComponent implements OnInit {
       }
     );
   }
+
   goToEdit(item) {
     this.router.navigate(['sku-edit']);
     localStorage.setItem('sku_data', JSON.stringify(item));
   }
+
   goBack(){
     window.history.back();
   }
 
   setSKUStatus(item){
+    this.toggleLoading();
     this.appService.setSKUStatus(item.sku_id, item.sku_status).subscribe(
       event => {
+        this.toggleLoading();
         if (!event || event.ev_error != 0){
           alert('更新失败');
         }
@@ -82,8 +91,10 @@ export class SboxSpuEditComponent implements OnInit {
       // 'spu_image': this.SPUData.spu_image,
       'spu_status': this.SPUData.spu_status,
     };
+    this.toggleLoading();
     this.appService.updateSPUData(body).subscribe(
       event => {
+        this.toggleLoading();
         if (!event || event.ev_error != 0){
           alert('更新失败');
         }
