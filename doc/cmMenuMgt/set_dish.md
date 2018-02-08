@@ -19,11 +19,13 @@
 
 | Tables  | 类型及其范围 | 说明     | 默认值  |
 | ------- | ------ | ------ | ---- |
+| ds_id     | number | 菜品ID（不填为新增菜品）   |    |
 | rid     | number | 餐馆ID   |      |
 | int_no  | string | 菜品内部ID |      |
 | dt_id   | number | 菜品分类ID |      |
 | ds_name | string | 菜品名字   |      |
-| price   | number | 价格     |      |
+| ds_price   | number | 价格     |      |
+| tpgs   | array | topping groups    |      |
 
 
 返回字段说明:
