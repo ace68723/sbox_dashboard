@@ -27,6 +27,9 @@
 | ds_price   | number | 价格     |      |
 | tpgs   | array | topping groups    |      |
 
+| tpgs  | 类型及其范围 | 说明     | 默认值  |
+| ------- | ------ | ------ | ---- |
+| tpg_id     | number | Topping group ID   |    |
 
 返回字段说明:
 
