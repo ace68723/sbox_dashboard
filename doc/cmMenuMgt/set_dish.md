@@ -1,8 +1,8 @@
-## 菜单菜品 API - 添加
+## 菜单菜品 API - 添加/编辑
 
 |  Tables  |           说明            | 默认值  |
 | :------: | :---------------------: | :--: |
-|   URL    | /api/manage/v1/add_dish |      |
+|   URL    | /api/manage/v1/set_dish |      |
 | HTTP请求方式 |          POST           |      |
 |  是否需要登录  |            否            |      |
 |  授权访问限制  |           暂无            |      |
