@@ -38,9 +38,13 @@ export class WeeklyComponent implements OnInit, AfterViewInit {
     this.time.iv_end = this.ipp.nativeElement.value;
     this.app.getWeeklyCount(this.time).subscribe(
       event => {
+        alert('获取成功');
         console.log(event);
         this.prod_counts = event.ea_prod_count;
         console.log(this.prod_counts);
+      },
+      event => {
+        alert('获取失败');
       }
     );
     setTimeout(() => {

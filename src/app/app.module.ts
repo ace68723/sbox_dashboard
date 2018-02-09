@@ -1,3 +1,6 @@
+import { DriverComponent } from './driver/driver.component';
+import { CreditComponent } from './credit/credit.component';
+import { HomeComponent } from './home/home.component';
 import { HeaderComponent } from './header/header.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { AppService } from './app.service';
@@ -17,6 +20,7 @@ import { SboxSpuEditComponent } from './sbox-spu-edit/sbox-spu-edit.component';
 
 import { SboxSkuListComponent } from './sbox-sku-list/sbox-sku-list.component';
 import { SboxSkuEditComponent } from './sbox-sku-edit/sbox-sku-edit.component';
+import { WeeklyComponent } from './weeklynumber/weekly.component';
 
 
 @NgModule({
@@ -27,7 +31,11 @@ import { SboxSkuEditComponent } from './sbox-sku-edit/sbox-sku-edit.component';
     SboxSkuEditComponent,
     SboxSpuEditComponent,
     SidebarComponent,
-    HeaderComponent
+    HeaderComponent,
+    HomeComponent,
+    CreditComponent,
+    DriverComponent,
+    WeeklyComponent
   ],
   imports: [
     BrowserModule,

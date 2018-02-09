@@ -25,14 +25,17 @@
                             </div>
                             <button (click) = "getWeeklyCount()" class="btn m-btn m-btn--gradient-from-primary m-btn--gradient-to-info" >获取销量</button>
                         </div>
-                        <div *ngFor="let prod of visibleProdCounts" >
-                          <table class="table table-bordered table-responsive" >
+                        <hr>
+                        <h2 style="text-align:center" >{{time.iv_start}} --- {{time.iv_end}} 商品销售清单  </h2 >
+                        <hr>
+                        <div  style = 'margin-top:30px'>
+                          <table class="table table-bordered m-table m-table--border-brand m-table--head-bg-brand" >
                           <tr>
                               <th style = "text-align: center;margin-right:30px;width:250px">产品pbid</th>
                               <th style = "text-align: center;margin-right:30px;width:250px">产品全名</th>
                               <th style = "text-align: center;margin-right:30px;width:250px">数量</th>
                           </tr>
-                          <tr>
+                          <tr *ngFor="let prod of visibleProdCounts">
                               <td  style = "text-align: center">{{prod.pbid}}</td>
                               <td  style = "text-align: center">{{prod.fullname}}</td>
                               <td  style = "text-align: center">{{prod.count}}</td>

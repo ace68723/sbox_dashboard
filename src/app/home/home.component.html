@@ -11,11 +11,10 @@
                     <div class="m-section__content" >
 
                         <div *ngFor="let box of boxes" >
-                             <p >下单时间：{{box.created}} </p>
                         
                           <div style = 'display: inline-flex' >
                               <p style = 'margin-right:30px'>单号obid：{{box.obid}} </p>
-                               <p >箱子号bbid：{{box.bbid}} </p>
+                              <p >下单时间：{{box.created}} </p>
                           </div>
                           <br>
                           <div style = 'display: inline-flex' >
@@ -24,24 +23,18 @@
                           <div class="m-section">
                           <table class="table table-bordered m-table m-table--border-brand m-table--head-bg-brand" >
                           <tr>
-                              <th style = "text-align: center;margin-right:30px">产品pbid</th>
-                              <th style = "text-align: center;margin-right:30px">SKU</th>
+                              <th style = "text-align: center;margin-right:30px">产品SKU-ID</th>
                               <th style = "text-align: center;margin-right:30px">产品全名</th>
                               <th style = "text-align: center;margin-right:30px">口味</th>
-                              <th style = "text-align: center;margin-right:30px">重量</th>
                               <th style = "text-align: center;margin-right:30px">数量</th>
                               <th style = "text-align: center;margin-right:30px">单价</th>
-                              <th style = "text-align: center;margin-right:30px">格数</th>
                           </tr>
                           <tr *ngFor="let products of box.products" >
-                              <td scope="row">{{products.pbid}}</td>
-                              <td>{{products.sku}}</td>
+                              <td scope="row">{{products.sku_id}}</td>
                               <td>{{products.fullname}}</td>
-                              <td>{{products.attr1}}</td>
-                              <td>{{products.attr2}}</td>
+                              <td>{{products.name}}</td>
                               <td>{{products.amount}}</td>
                               <td>{{products.price}}</td>
-                              <td>{{products.weights}}</td>
                           </tr>
                           </table>
                           </div>
