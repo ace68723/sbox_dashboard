@@ -1,0 +1,47 @@
+
+<body class="m-page--fluid m--skin- m-content--skin-light2 m-header--fixed m-header--fixed-mobile m-aside-left--enabled m-aside-left--skin-dark m-aside-left--offcanvas m-footer--push m-aside--offcanvas-default"  >
+    <!-- begin:: Page -->
+    <div class="m-grid m-grid--hor m-grid--root m-page">
+        <app-header></app-header>
+        <div class="m-grid__item m-grid__item--fluid m-grid m-grid--ver-desktop m-grid--desktop m-body">
+            <app-sidebar></app-sidebar>
+            <div class="m-content" style="width:100%">
+                <div class="m-content" style="width:100%">
+            
+                    <div class="m-section__content" >
+
+                        <div style = 'display:inline-flex'>
+                            <div class='input-group date' id='m_datepicker_1_validate' >
+                                <input type='text' class="form-control m-input" readonly placeholder="Select date" value = 'time.iv_start'[(ngModel)]="time.iv_start" #ip [ngModelOptions]="{standalone: true}"/> 
+                                <span class="input-group-addon">
+                                    <i class="la la-calendar-check-o"></i>
+                                </span>
+                            </div>
+                            <div class='input-group date' id='m_datepicker_1_validate' style="margin-left:20px;margin-right:20px">
+                                <input type='text' class="form-control m-input" readonly placeholder="Select date" value = 'time.end'[(ngModel)]="time.end" #ipp [ngModelOptions]="{standalone: true}"/> 
+                                <span class="input-group-addon">
+                                    <i class="la la-calendar-check-o"></i>
+                                </span>
+                            </div>
+                            <button (click) = "getWeeklyCount()" class="btn m-btn m-btn--gradient-from-primary m-btn--gradient-to-info" >获取销量</button>
+                        </div>
+                        <div *ngFor="let prod of visibleProdCounts" >
+                          <table class="table table-bordered table-responsive" >
+                          <tr>
+                              <th style = "text-align: center;margin-right:30px;width:250px">产品pbid</th>
+                              <th style = "text-align: center;margin-right:30px;width:250px">产品全名</th>
+                              <th style = "text-align: center;margin-right:30px;width:250px">数量</th>
+                          </tr>
+                          <tr>
+                              <td  style = "text-align: center">{{prod.pbid}}</td>
+                              <td  style = "text-align: center">{{prod.fullname}}</td>
+                              <td  style = "text-align: center">{{prod.count}}</td>
+                          </tr>
+                        </table >
+                        </div>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body> 

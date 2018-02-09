@@ -1,4 +1,3 @@
-import { Component, OnInit } from '@angular/core';
 import { Component, OnChanges, SimpleChanges, Input, OnInit, AfterViewInit } from '@angular/core';
 import { ScriptLoaderService } from '../../js/script-loader.service';
 import { BrowserModule } from '@angular/platform-browser';
@@ -13,8 +12,10 @@ import {ActivatedRoute, Router} from '@angular/router';
   styleUrls: ['./sbox-spu-list.component.css']
 })
 
-export class SBoxSpuListComponent implements OnInit, AfterViewInit {
+export class SBoxSpuListComponent implements OnInit {
   page_num: number;
+  selectedBoxes: any = [];
+  companyInfo: any = [];
   listData: any = [];
   pageNumArray: any = [];
   page_size: number;
@@ -24,8 +25,7 @@ export class SBoxSpuListComponent implements OnInit, AfterViewInit {
   dataloded: any = false;
   constructor(private _script: ScriptLoaderService, private appService: AppService,
     public route: ActivatedRoute, private router: Router) {
-
-  }
+    }
   ngOnInit() {
    this.getSPUList();
    console.log(this.pageNumArray);
@@ -52,7 +52,7 @@ export class SBoxSpuListComponent implements OnInit, AfterViewInit {
   }
 
   goToPage(i) {
-    this.page_num = i+1;
+    this.page_num = i + 1;
     this.appService.getSPUList(i + 1).subscribe(
       event => {
         this.companyInfo = event.ev_data.recs;
@@ -61,11 +61,11 @@ export class SBoxSpuListComponent implements OnInit, AfterViewInit {
     );
   }
 
-  goToEdit(item) {
-    return;
-    this.router.navigate(['transaction']);
-    localStorage.setItem('account_id', item.account_id);
-    localStorage.setItem('merchantname', item.display_name);
-    localStorage.setItem('merchantID', item.merchant_id);
-  }
+  // goToEdit(item) {
+  //   return;
+  //   this.router.navigate(['transaction']);
+  //   localStorage.setItem('account_id', item.account_id);
+  //   localStorage.setItem('merchantname', item.display_name);
+  //   localStorage.setItem('merchantID', item.merchant_id);
+  // }
 }
