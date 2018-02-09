@@ -1,3 +1,176 @@
-<p>
-  sbox-spu-edit works!
-</p>
+<!-- begin:: Page -->
+<div class="m-grid m-grid--hor m-grid--root m-page">
+  <!-- <app-header></app-header> -->
+  <div class="m-grid__item m-grid__item--fluid m-grid m-grid--ver-desktop m-grid--desktop m-body">
+    <!-- <app-sidebar></app-sidebar> -->
+    <div class="m-content" style="width:100%; height: 100%">
+      <div class="m-content" style="width:100%">
+
+        <div class="m-portlet m-portlet--mobile">
+          <div class="m-portlet__head">
+            <div class="m-portlet__head-caption">
+              <div class="m-portlet__head-title">
+                <h3 class="m-portlet__head-text">
+                      Edit SPU
+                                </h3>
+              </div>
+            </div>
+
+          </div>
+          <div class="m-portlet__body">
+
+            <div class="tab-content">
+              <div class="tab-pane active" id="m_tabs_4_1" role="tabpanel">
+                <table class="table m-table m-table--head-separator-primary">
+                  <tr>
+                    <td style="width:150px">SPU ID</td>
+                    <td>
+                      <input [disabled]='true' type="text" class="form-control date-set end-time2" [(ngModel)]="SPUData.spu_id" size='20' style="border-radius: 10px;">
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="width:150px">SPU Name</td>
+                    <td colspan="3">
+                      <input [disabled]='editing == false' type="text" class="form-control date-set end-time2" [(ngModel)]="SPUData.spu_name" size='20' style="border-radius: 10px;">
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="width:150px">Price($)</td>
+                    <td colspan="3">
+                      <input [disabled]='true' type="text" class="form-control date-set end-time2" [(ngModel)]="SPUData.spu_price" size='20' style="border-radius: 10px;">
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="width:150px">Image</td>
+                    <td colspan="3">
+                      <input [disabled]='editing == false' type="text" class="form-control date-set end-time2" [(ngModel)]="SPUData.spu_image" style="border-radius: 10px;">
+                      <button class="btn btn-warning" (click)='showUpload'> Upload</button>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td style="width:150px">Status</td>
+                    <td colspan="3">
+                      <select [(ngModel)] = "SPUData.spu_status"  class="form-control m-input">
+                        <option *ngFor="let c of status_mapping" [ngValue]="c.id">{{c.name}}</option>
+                      </select>
+                    </td>
+                  </tr>
+                </table>
+                <div style="display: inline-flex">
+                  <button [disabled]="!dataLoded" class="btn btn-warning" (click)='updateSPUData()'> Save</button>
+                </div>
+                <div style="display: inline-flex">
+                  <button class="btn btn-cancel" (click)='goBack()'> Cancel</button>
+                </div>
+              </div>
+            </div>
+            <!--end: Datatable -->
+          </div>
+
+          <!-- SKU List -->
+          <div class="m-portlet__body">
+
+            <div class="m-section__content">
+              <table class="table m-table m-table--head-separator-primary">
+                <thead>
+                  <tr>
+                    <th>
+                      SPU ID
+                    </th>
+                    <th>
+                      SKU ID
+                    </th>
+                    <th>
+                      Name
+                    </th>
+                    <th>
+                      Alias
+                    </th>
+                    <th>
+                      Original Price
+                    </th>
+                    <th>
+                      Price
+                    </th>
+                    <th>
+                      Amount
+                    </th>
+                    <th>
+                      Threshhold
+                    </th>
+                    <th>
+                      Image
+                    </th>
+                    <th>
+                      Fact Image
+                    </th>
+                    <th>
+                      Status
+                    </th>
+                    <th>
+                      Action
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let item of SKUList; index as i;trackBy: i" [attr.data-index]="i">
+                    <td>
+                      {{item.spu_id}}
+                    </td>
+                    <td>
+                      {{item.sku_id}}
+                    </td>
+                    <td>
+                      {{item.sku_name}}
+                    </td>
+                    <td>
+                      {{item.sku_alias}}
+                    </td>
+                    <td>
+                      ${{item.sku_original_price}}
+                    </td>
+                    <td>
+                      ${{item.sku_price}}
+                    </td>
+                    <td>
+                      {{item.sku_amount}}
+                    </td>
+                    <td>
+                      {{item.sku_threshold}}
+                    </td>
+                    <td>
+                      {{item.sku_image_id}}
+                    </td>
+                    <td>
+                      {{item.sku_fact_image_id}}
+                    </td>
+                    <td>
+                      <select [(ngModel)] = "item.sku_status"  class="form-control m-input" (ngModelChange)="setSKUStatus(item)">
+                        <option [disabled]="!dataLoded" *ngFor="let c of status_mapping" [ngValue]="c.id">{{c.name}}</option>
+                      </select>
+                    </td>
+
+                    <td>
+                      <button class="btn btn-warning" (click)='goToEdit(item)'>Edit</button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <div style="display: inline-flex" *ngFor="let item of pageNumArray;  index as i;trackBy: i" [attr.data-index]="i">
+                <a [class.focus]="i+1 === page_num" style="margin-right:7px" class="btn btn-outline-warning m-btn m-btn--icon m-btn--icon-only" (click)='goToPage(i)'>
+                  <p style="height: 100%;
+                                                  margin-top: 27%;">{{i+1}}</p>
+                </a>
+              </div>
+            </div>
+
+            <!--end: Datatable -->
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

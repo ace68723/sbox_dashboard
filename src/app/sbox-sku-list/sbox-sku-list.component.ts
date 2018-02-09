@@ -13,6 +13,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 })
 export class SboxSkuListComponent implements OnInit {
   page_num: number;
+  parent_spu: number = 0;
   listData: any = [];
   pageNumArray: any = [];
   page_size: number;
@@ -23,10 +24,8 @@ export class SboxSkuListComponent implements OnInit {
     public route: ActivatedRoute, private router: Router) {
 
   }
-  
   ngOnInit() {
    this.getSKUList();
-   console.log(this.pageNumArray);
   }
 
   getNumber() {
@@ -34,37 +33,36 @@ export class SboxSkuListComponent implements OnInit {
   }
 
   getSKUList() {
-    this.appService.getSKUList(0, this.page_num).subscribe(
+    this.appService.getSKUList(this.parent_spu, this.page_num).subscribe(
       event => {
-        this.listData = event.ev_data.recs;
-        this.page_num = event.ev_data.page_num;
-        this.total_page = event.ev_data.total_page;
+        // console.log('gg', event);
+        this.listData = event.eo_spu.sku_list;
+        this.page_num = event.eo_spu.sku_page_number;
+        this.total_page = event.eo_spu.sku_total_page;
         this.dataloded = true;
-        console.log(this.page_num);
+        console.log('a', this.page_num);
       }
     );
     setTimeout(() => {
       this.getNumber();
     }, 2000);
-    console.log(this.pageNumArray);
   }
 
-  // goToPage(i) {
-  //   this.page_num = i+1;
-  //   this.appService.getSKUList(i + 1).subscribe(
-  //     event => {
-  //       this.companyInfo = event.ev_data.recs;
+  goToPage(i) {
+    this.page_num = i + 1;
+    this.appService.getSKUList(this.parent_spu, i + 1).subscribe(
+      event => {
+        this.listData = event.eo_spu.sku_list;
+      }
+    );
+  }
 
-  //     }
-  //   );
-  // }
-
-  // goToEdit(item) {
-  //   return;
-  //   this.router.navigate(['transaction']);
-  //   localStorage.setItem('account_id', item.account_id);
-  //   localStorage.setItem('merchantname', item.display_name);
-  //   localStorage.setItem('merchantID', item.merchant_id);
-  // }
+  goToEdit(item) {
+    return;
+    // this.router.navigate(['transaction']);
+    // localStorage.setItem('account_id', item.account_id);
+    // localStorage.setItem('merchantname', item.display_name);
+    // localStorage.setItem('merchantID', item.merchant_id);
+  }
 
 }

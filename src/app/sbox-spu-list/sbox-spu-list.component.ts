@@ -12,7 +12,7 @@ import {ActivatedRoute, Router} from '@angular/router';
   styleUrls: ['./sbox-spu-list.component.css']
 })
 
-export class SBoxSpuListComponent implements OnInit {
+export class SboxSpuListComponent implements OnInit {
   page_num: number;
   selectedBoxes: any = [];
   companyInfo: any = [];
@@ -20,15 +20,18 @@ export class SBoxSpuListComponent implements OnInit {
   pageNumArray: any = [];
   page_size: number;
   i: any;
-  keyword: any;
   total_page: number;
-  dataloded: any = false;
-  constructor(private _script: ScriptLoaderService, private appService: AppService,
-    public route: ActivatedRoute, private router: Router) {
-    }
+  status_mapping: any = [];
+  dataLoded: any = true;
+  constructor(private _script: ScriptLoaderService, private appService: AppService, public route: ActivatedRoute, private router: Router) {
+      this.status_mapping = this.appService.getStatusMapping();
+  }
   ngOnInit() {
-   this.getSPUList();
-   console.log(this.pageNumArray);
+    this.getSPUList();
+  }
+
+  toggleLoading() {
+    this.dataLoded = !this.dataLoded;
   }
 
   getNumber() {
@@ -36,36 +39,41 @@ export class SBoxSpuListComponent implements OnInit {
   }
 
   getSPUList() {
+    this.toggleLoading();
     this.appService.getSPUList(this.page_num).subscribe(
       event => {
-        this.listData = event.ev_data.recs;
-        this.page_num = event.ev_data.page_num;
-        this.total_page = event.ev_data.total_page;
-        this.dataloded = true;
-        console.log(this.page_num);
+        this.toggleLoading();
+        this.listData = event.ea_spu_list;
+        this.page_num = event.ev_page_num;
+        this.total_page = event.ev_total_page;
+        this.getNumber();
       }
     );
-    setTimeout(() => {
-      this.getNumber();
-    }, 2000);
-    console.log(this.pageNumArray);
   }
 
   goToPage(i) {
     this.page_num = i + 1;
     this.appService.getSPUList(i + 1).subscribe(
       event => {
-        this.companyInfo = event.ev_data.recs;
-
+        this.listData = event.ea_spu_list;
       }
     );
   }
 
-  // goToEdit(item) {
-  //   return;
-  //   this.router.navigate(['transaction']);
-  //   localStorage.setItem('account_id', item.account_id);
-  //   localStorage.setItem('merchantname', item.display_name);
-  //   localStorage.setItem('merchantID', item.merchant_id);
-  // }
+  goToEdit(item) {
+    this.router.navigate(['spu-edit']);
+    localStorage.setItem('spu_id', item.spu_id);
+  }
+
+  setSPUStatus(item) {
+    this.toggleLoading();
+    this.appService.setSPUStatus(item.spu_id, item.status).subscribe(
+      event => {
+        this.toggleLoading();
+        if (!event || event.ev_error !== 0) {
+          alert('更新失败');
+        }
+      }
+    );
+  }
 }
