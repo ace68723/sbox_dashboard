@@ -21,10 +21,13 @@ export class SboxSpuListComponent implements OnInit {
   page_size: number;
   i: any;
   total_page: number;
+  keyword: any;
+  search_status: number;
   status_mapping: any = [];
   dataLoded: any = true;
   constructor(private _script: ScriptLoaderService, private appService: AppService, public route: ActivatedRoute, private router: Router) {
       this.status_mapping = this.appService.getStatusMapping();
+      this.search_status = -999;
   }
   ngOnInit() {
     this.getSPUList();
@@ -39,6 +42,8 @@ export class SboxSpuListComponent implements OnInit {
   }
 
   getSPUList() {
+    // this.keyword = "123";
+
     this.toggleLoading();
     this.appService.getSPUList(this.page_num).subscribe(
       event => {
@@ -46,6 +51,19 @@ export class SboxSpuListComponent implements OnInit {
         this.listData = event.ea_spu_list;
         this.page_num = event.ev_page_num;
         this.total_page = event.ev_total_page;
+        this.getNumber();
+      }
+    );
+  }
+
+  getSPUListByKeyword() {
+    this.toggleLoading();
+    this.appService.getSPUListByKeyword(this.keyword).subscribe(
+      event => {
+        this.listData = event.ea_spu_list;
+        this.page_num = event.ev_page_num;
+        this.total_page = event.ev_total_page;
+        this.toggleLoading();
         this.getNumber();
       }
     );
@@ -75,5 +93,24 @@ export class SboxSpuListComponent implements OnInit {
         }
       }
     );
+  }
+
+  getSPUListbyStatus(item){
+    if (item == -999){
+      // if selected all
+      this.getSPUList();
+    }
+    else{
+      this.toggleLoading();
+      this.appService.getSPUListByStatus(this.search_status).subscribe(
+        event => {
+          this.listData = event.ea_spu_list;
+          this.page_num = event.ev_page_num;
+          this.total_page = event.ev_total_page;
+          this.toggleLoading();
+          this.getNumber();
+        }
+      );
+    }
   }
 }

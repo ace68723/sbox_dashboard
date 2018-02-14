@@ -16,6 +16,7 @@ export class AppService {
 
     getStatusMapping() {
       return [
+        {'id': -999, 'name': '全部'},
         {'id': 0, 'name': '正常'},
         {'id': 1, 'name': '已售罄'},
         {'id': 9, 'name': '已下线'},
@@ -74,6 +75,38 @@ export class AppService {
       return this.http.post(
           'http://norgta.com/api/sbmanage/v2/get_spu_list',
           {'iv_page_num': page_num, 'iv_page_size': 8},
+          { headers: headers}
+        ).map((response: Response) => {
+          return response.json();
+        }).catch(this.handleError);
+    }
+
+    getSPUListByKeyword(keyword) {
+      const headers = new Headers({
+        'Authortoken': 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1aWQiOiIxMDYxMSIsImV4cGlyZWQiOjE0ODc3OTM2MDAsImxhc3Rsb2dpbiI6MTQ4MTc0MjU2N30.ZHwmJEBV_1cO5uxR729Hd49rRIpRdCEDbX-uVDgVee0',
+        'uuid': '1',
+        'Content-Type': 'application/json',
+      });
+      const options = new RequestOptions({ headers: headers });
+      return this.http.post(
+          'http://norgta.com/api/sbmanage/v2/get_spu_list',
+          {'iv_page_num': 1, 'iv_page_size': 8, 'keyword': keyword, 'search_type': "keyword"},
+          { headers: headers}
+        ).map((response: Response) => {
+          return response.json();
+        }).catch(this.handleError);
+    }
+
+    getSPUListByStatus(status) {
+      const headers = new Headers({
+        'Authortoken': 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1aWQiOiIxMDYxMSIsImV4cGlyZWQiOjE0ODc3OTM2MDAsImxhc3Rsb2dpbiI6MTQ4MTc0MjU2N30.ZHwmJEBV_1cO5uxR729Hd49rRIpRdCEDbX-uVDgVee0',
+        'uuid': '1',
+        'Content-Type': 'application/json',
+      });
+      const options = new RequestOptions({ headers: headers });
+      return this.http.post(
+          'http://norgta.com/api/sbmanage/v2/get_spu_list',
+          {'iv_page_num': 1, 'iv_page_size': 8, 'status': status, 'search_type': "status"},
           { headers: headers}
         ).map((response: Response) => {
           return response.json();
