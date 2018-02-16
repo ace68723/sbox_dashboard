@@ -7,11 +7,11 @@
             <app-sidebar></app-sidebar>
             <div class="m-content" style="width:100%">
                 <div class="m-content" style="width:100%">
-            
+
                     <div class="m-section__content" >
 
                         <div *ngFor="let box of boxes" >
-                        
+
                           <div style = 'display: inline-flex' >
                               <p style = 'margin-right:30px'>单号obid：{{box.obid}} </p>
                               <p >下单时间：{{box.created}} </p>
@@ -23,7 +23,8 @@
                           <div class="m-section">
                           <table class="table table-bordered m-table m-table--border-brand m-table--head-bg-brand" >
                           <tr>
-                              <th style = "text-align: center;margin-right:30px">产品SKU-ID</th>
+                              <th style = "text-align: center;margin-right:30px">SKU ID</th>
+                              <th style = "text-align: center;margin-right:30px">SPU ID</th>
                               <th style = "text-align: center;margin-right:30px">产品全名</th>
                               <th style = "text-align: center;margin-right:30px">口味</th>
                               <th style = "text-align: center;margin-right:30px">数量</th>
@@ -31,6 +32,7 @@
                           </tr>
                           <tr *ngFor="let products of box.products" >
                               <td scope="row">{{products.sku_id}}</td>
+                              <td scope="row">{{products.spu_id}}</td>
                               <td>{{products.fullname}}</td>
                               <td>{{products.name}}</td>
                               <td>{{products.amount}}</td>
@@ -39,11 +41,11 @@
                           </table>
                           </div>
                           <div style = 'display: inline-flex' >
-                        
+
                           <p style = 'margin-right:30px'>运费：{{box.delifee}} </p>
                            <p >总价： {{box.total}} </p>
                         </div>
-                        
+
                           <hr>
                         </div>
                         </div>
@@ -51,4 +53,4 @@
             </div>
         </div>
     </div>
-</body> 
+</body>
