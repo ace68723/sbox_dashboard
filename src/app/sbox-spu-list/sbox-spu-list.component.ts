@@ -22,6 +22,7 @@ export class SboxSpuListComponent implements OnInit {
   i: any;
   total_page: number;
   keyword: any;
+  search_spu_id: any;
   search_status: number;
   status_mapping: any = [];
   dataLoded: any = true;
@@ -81,6 +82,11 @@ export class SboxSpuListComponent implements OnInit {
   goToEdit(item) {
     this.router.navigate(['spu-edit']);
     localStorage.setItem('spu_id', item.spu_id);
+  }
+
+  goToEditSPU(spu_id) {
+    this.router.navigate(['spu-edit']);
+    localStorage.setItem('spu_id', spu_id);
   }
 
   setSPUStatus(item) {

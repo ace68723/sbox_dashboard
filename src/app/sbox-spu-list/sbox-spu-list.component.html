@@ -19,16 +19,21 @@
 
             </div>
             <div class="m-portlet__body">
-              <div class="m-section__content" style="text-align: right;">
 
+
+              <div class="m-section__content" style="text-align: right;">
                 <div style="display: inline-flex; margin-bottom:20px">
+
                   <select [(ngModel)] = "search_status"  class="form-control m-input" (ngModelChange)="getSPUListbyStatus(search_status)">
                     <option [disabled]="!dataLoded" *ngFor="let c of status_mapping" [ngValue]="c.id">{{c.name}}</option>
                   </select>
 
-                  <input class = "form-control m-input" type="text" placeholder="Search" [(ngModel)]="keyword" style="margin-right:30px;width:200%">
+                  <input class = "form-control m-input" type="text" placeholder="Search" [(ngModel)]="keyword" style="margin-right:20px;width:200%">
                   <button class="btn btn-warning" (click) = 'getSPUListByKeyword()' >搜索</button>
                   <button class="btn btn-normal" (click) = 'getSPUList()' >清空</button>
+
+                  <input class = "form-control m-input" type="text" placeholder="SPU ID" [(ngModel)]="search_spu_id" style="width:100px; margin-left:30px;margin-right:20px;">
+                  <button class="btn btn-warning" (click) = 'goToEditSPU(search_spu_id)' >前往</button>
                 </div>
 
                 <table class="table m-table m-table--head-separator-primary">
