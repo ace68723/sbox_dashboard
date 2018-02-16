@@ -85,8 +85,13 @@ export class SboxSpuListComponent implements OnInit {
   }
 
   goToEditSPU(spu_id) {
-    this.router.navigate(['spu-edit']);
-    localStorage.setItem('spu_id', spu_id);
+    if (spu_id.match(/^[0-9]+$/) == null){
+      alert('请输入正确的SPU ID');
+    }
+    else{
+      this.router.navigate(['spu-edit']);
+      localStorage.setItem('spu_id', spu_id);
+    }
   }
 
   setSPUStatus(item) {
