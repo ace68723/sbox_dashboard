@@ -50,7 +50,7 @@
 | tpg_id     | number | Topping group ID   |    |
 | tpg_name     | string | Topping group name   |    |
 | tpg_limit     | number | Topping group limit（最多选几项）  |    |
-| tpgs     | array | Topping 选项  |    |
+| tps     | array | Topping 选项  |    |
 
 | tps  | 类型及其范围 | 说明     | 默认值  |
 | ------- | ------ | ------ | ---- |
