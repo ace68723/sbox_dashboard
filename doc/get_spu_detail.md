@@ -68,7 +68,7 @@
 | sku_image         | string | 图片url                                    |
 | sku_fact_image_id         | number | fact图片ID                                    |
 | sku_fact_image         | string | fact图片url                                    |
-
+| sku_limit | number | 否 | 限购数， -1不限制 |
 
 
 返回结果(默认JSON): 
