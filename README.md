@@ -7,6 +7,7 @@
 - API [2.6 Add Sku](https://github.com/ace68723/sbox_dashboard/blob/master/doc/add_sku.md)
 - API [2.7 Add Spu_Section](https://github.com/ace68723/sbox_dashboard/blob/master/doc/add_spu_section.md)
 - API [2.8 Add Sku_Section](https://github.com/ace68723/sbox_dashboard/blob/master/doc/add_sku_section.md) 
+- API [2.8 Get Spu_Name List](https://github.com/ace68723/sbox_dashboard/blob/master/doc/get_spu_name_list.md) 
 
 
 ## 2018-02-06 update
@@ -39,8 +40,8 @@
   * [2.6 Add Sku](https://github.com/ace68723/sbox_dashboard/blob/master/doc/add_sku.md)
   * [2.7 Add Spu_Section](https://github.com/ace68723/sbox_dashboard/blob/master/doc/add_spu_section.md)
   * [2.8 Add Sku_Section](https://github.com/ace68723/sbox_dashboard/blob/master/doc/add_sku_section.md)
-  ​
-  
+  * [2.8 Get Spu_Name List](https://github.com/ace68723/sbox_dashboard/blob/master/doc/get_spu_name_list.md)  
+
 <div id="1"> <div/>
 
 ## 1. data sample
